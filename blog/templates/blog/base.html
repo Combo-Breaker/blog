@@ -1,0 +1,20 @@
+{% load staticfiles %}
+    <html>
+        <head>
+            <title>имиджборд</title>
+            <link rel="stylesheet" href="{% static 'css/flood.css' %}">
+        </head>
+        <body class="body">
+        <div class="page-header">
+            <h1>Флуд</h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
