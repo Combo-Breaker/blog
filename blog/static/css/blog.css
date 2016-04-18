@@ -3,7 +3,7 @@
     src: url(lobster.ttf); 
 }
 
-.body {
+body {
 background-image: url(pic/longcat.png); 
 background-size: 100%; /* Современные браузеры */  
 background-repeat: no-repeat;

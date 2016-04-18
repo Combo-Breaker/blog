@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+    {% block content %}
+        {% for category in categories %}
+            <div>                
+                <h1>{{ category.title }}</h1>
+            </div>
+        {% endfor %}
+    {% endblock content %}

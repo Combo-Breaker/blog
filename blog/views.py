@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.utils import timezone
-from .models import Post
+from .models import Post, Board, Comment
 from django.shortcuts import redirect
-#from .models import Board
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -28,7 +27,6 @@ def post_new(request):
             form = PostForm()
         return render(request, 'blog/post_edit.html', {'form': form})
 
-
-#def board(id):
-#    board = 
-#    return render(id, 'blog/post_list.html', {})
+def board_list(request):
+    boards = Board.objects
+    return render(request, 'blog/board_list.html', {'boards': boards})
