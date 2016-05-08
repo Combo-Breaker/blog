@@ -10,9 +10,7 @@
             <p>{{ post.text|linebreaks }}</p>
             </div>
         {% endfor %}
-        <div>
-            {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            {% endif %}
+        <div class = "new">
+            <a href="{% url 'post_new' bd=board.pk %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
         </div>
     {% endblock content %}

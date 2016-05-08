@@ -5,9 +5,10 @@
 
 body {
 background-image: url(pic/longcat.png); 
-background-size: 100%; /* Современные браузеры */  
+background-size: 100%;  
 background-repeat: no-repeat;
 background-attachment: fixed  
+background-color: red;
 }
 
 .page-header {
@@ -88,5 +89,11 @@ margin-right: 20px;
   right: -10px;
   bottom: -10px;
   left: -10px;
+}
+
+.new {
+  height: 50px;
+  width: 50px;
+  background-color: blue;
 }
 
