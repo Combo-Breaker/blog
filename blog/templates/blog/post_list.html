@@ -7,10 +7,10 @@
                 {{ post.published_date }}
             </div>
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaks }}</p>
+            <p>{{ post.text|safe }}</p>
             </div>
         {% endfor %}
-        <div class = "new">
-            <a href="{% url 'post_new' bd=board.pk %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <div >
+            <a href="{% url 'post_new' bd=board.pk %}" class="menu"> {{what}}</a>
         </div>
     {% endblock content %}

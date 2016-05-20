@@ -10,4 +10,16 @@
             <h1>{{ post.title }}</h1>
             <p>{{ post.text|linebreaks }}</p>
         </div>
+        {% for comment in comments %}
+            <div class="post">
+                <p>{{ comment.text }}</p>
+            </div>
+        {% endfor %}
+        <div>
+            <a href="" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+        </div>
     {% endblock %}

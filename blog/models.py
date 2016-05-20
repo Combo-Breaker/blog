@@ -7,34 +7,26 @@ from django.utils.html import strip_tags
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.utils.six.moves.urllib.parse import urlparse
-
+from ckeditor.fields import RichTextField 
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Board(models.Model):
     name = models.CharField(_('board name'),max_length=50)
-    #slug = models.CharField(_('board slug'), unique=True, max_length=100, default="")
-
-    # class Meta():
-    #     verbose_name = _('board')
-    #     verbose_name_plural = _('boards')
-
+ 
     def __str__(self):
         return self.name
-'''
-    def get_absolute_url(self):
-        return reverse('blog:board', args=[self.slug])
-'''
+
 
 
 class Post(models.Model):
-    #author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    text = models.TextField()
+    #text = RichTextUploadingField(blank=True, default='')
+    text = RichTextField(blank=True, default='')
     board = models.ForeignKey(Board, default="")
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    #slug = models.CharField(_('post slug'), unique=True, max_length=100, default="")
    
     def publish(self):
         self.published_date = timezone.now()
@@ -43,17 +35,10 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    '''   
-    def get_absolute_url(self):
-        # this expression also used in Comment.get_absolute_url()
-        return reverse('blog:post', args=[self.slug])
-    '''    
-
 
 class Comment(models.Model):
-    #author = models.ForeignKey('auth.User')
     post = models.ForeignKey(Post, default="")
-    text = models.TextField()
+    text = RichTextField()
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
@@ -65,9 +50,5 @@ class Comment(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
-
-'''
-class Document(models.Model):
-    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
-'''    
+ 
         

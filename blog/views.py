@@ -28,9 +28,10 @@ def board_list(request):
     return render(request, 'blog/board_list.html', {'boards': boards})
 
 def board_detail(request, pk):
+    boards = Board.objects.all()
     posts = Post.objects.filter(board=pk).order_by('-published_date')
     board = Board.objects.get(pk=pk)
-    return render(request, 'blog/post_list.html', {'posts': posts, 'board':board})
+    return render(request, 'blog/post_list.html', {'posts': posts, 'board':board, 'boards': boards})
 
 def post_new(request, bd):
         board_get=Board.objects.get(pk=bd)
@@ -45,10 +46,32 @@ def post_new(request, bd):
         else:
             form = PostForm()
         return render(request, 'blog/post_edit.html', {'form': form})
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
 
+def comment_new(request, post):
+        post_get=Post.objects.get(pk=post)
+        if request.method == "POST":
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post_get
+                comment.published_date = timezone.now()
+                comment.save()
+                return redirect('blog.views.post_detail', pk=post.pk)
+        '''
+        else:
+            form = CommentForm()
+        return render(request, 'blog/post_edit.html', {'form': form})
+'''
+
+def post_detail(request, pk):
+    boards = Board.objects.all()
+    comments = Comment.objects.filter(post=pk).order_by('-published_date')
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post, 'comments' : comments, 'boards': boards})
+
+
+def e404(request):
+    return render(request, 'blog/404.html', {}, status=404)
 
 # class post_list(ListView):
 #     model = Post
