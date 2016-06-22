@@ -1,0 +1,1 @@
+dj-database-url==0.3.0 -e git+https://github.com/nwcell/psycopg2-windows.git@win64-py34#egg=psycopg2

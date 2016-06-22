@@ -19,11 +19,12 @@
                 <p>{{ comment.text }}</p>
             </div>
         {% endfor %}
-        <div>
-            <a href="" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Save</button>
-        </form>
-        </div>
+        
+            <h4>New comment</h4>  
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button type="submit" class="save btn btn-default">Save</button>
+            </form>
+        
     {% endblock %}

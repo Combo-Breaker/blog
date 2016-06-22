@@ -42,6 +42,7 @@ margin-left: 40px;
 
 .date {
 font-style: italic;
+text-align: right;
 }
 
 .title {
@@ -61,10 +62,11 @@ width: 100%;
 
 .post {
 margin-bottom: 40px;
-background-color: #E6E6FA;
-width: 78%;
+width: auto;
 text-indent: 1.5em;
+text-align: 10px;
 font-family: Helvetica;  
+border: solid 3px black;
 }
 
 .post h3 a, .post h3 a:visited {
@@ -77,10 +79,10 @@ border-bottom: 5px;
 
 .comment {
 margin-bottom: 40px;
-background-color: #E6E6FA;
 width: 78%;
 text-indent: 1.5em;
 margin-left: 20px;
+border: solid 3px black;
 }
 
 .new_post {

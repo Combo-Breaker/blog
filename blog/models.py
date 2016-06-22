@@ -10,6 +10,7 @@ from django.utils.six.moves.urllib.parse import urlparse
 from ckeditor.fields import RichTextField 
 from ckeditor_uploader.fields import RichTextUploadingField
 
+
 class Board(models.Model):
     name = models.CharField(_('board name'),max_length=50)
  
@@ -20,7 +21,6 @@ class Board(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    #text = RichTextUploadingField(blank=True, default='')
     text = RichTextField(blank=True, default='')
     board = models.ForeignKey(Board, default="")
     created_date = models.DateTimeField(
