@@ -1,3 +1,2 @@
 # blog
 
-This is README.
